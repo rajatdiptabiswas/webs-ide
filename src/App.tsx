@@ -7,18 +7,44 @@ import dedent from 'ts-dedent';
 function App() {
   const [html, setHTML] = useState(dedent`
     <!-- html -->
-    <h1>Hello world!</h1>
+    <h1 id="title">hello world</h1>
+    <button onClick="fn()">🌈</button>
+
   `);
   const [css, setCSS] = useState(dedent`
     /* css */
     body {
       color: black;
       background-color: white;
+      font-family: sans-serif;
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
   `);
   const [js, setJS] = useState(dedent`
     // javascript
-    
+    const title = document.getElementById('title');
+
+    let index = 0;
+    const colors = [
+      'red',
+      'orange',
+      'yellow',
+      'green',
+      'blue',
+      'indigo',
+      'violet',
+    ];
+
+    const fn = () => {
+      title.style.color = colors[index++];
+      index %= colors.length;
+    };
+
   `);
 
   const [theme, setTheme] = useState('vs-light');
