@@ -54,7 +54,7 @@ function App() {
               setCode={setHTML}
             />
           </div>
-          <div className="h-1/3 border-t-2 border-b-2">
+          <div className="h-1/3">
             <Editor language="css" theme={theme} code={css} setCode={setCSS} />
           </div>
           <div className="h-1/3">
@@ -66,7 +66,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="flex-1 border-l-2">
+        <div className="flex-1">
           <Preview html={html} css={css} js={js} />
         </div>
       </div>
