@@ -30,15 +30,7 @@ function App() {
     const title = document.getElementById('title');
 
     let index = 0;
-    const colors = [
-      'red',
-      'orange',
-      'yellow',
-      'green',
-      'blue',
-      'indigo',
-      'violet',
-    ];
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
     const fn = () => {
       title.style.color = colors[index++];
@@ -50,7 +42,7 @@ function App() {
   const [theme, setTheme] = useState('vs-light');
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-hidden">
       <Navbar />
       <div className="flex min-h-container mt-16">
         <div className="flex-1">
@@ -62,7 +54,7 @@ function App() {
               setCode={setHTML}
             />
           </div>
-          <div className="h-1/3">
+          <div className="h-1/3 border-t-2 border-b-2">
             <Editor language="css" theme={theme} code={css} setCode={setCSS} />
           </div>
           <div className="h-1/3">
@@ -74,7 +66,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 border-l-2">
           <Preview html={html} css={css} js={js} />
         </div>
       </div>

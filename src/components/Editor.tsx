@@ -25,6 +25,9 @@ export default function Editor({
       onChange={(value: string | undefined) => {
         setCode(value ?? '');
       }}
+      options={{
+        fontSize: 13,
+      }}
     />
   );
 }
