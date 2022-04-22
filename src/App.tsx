@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import dedent from 'ts-dedent';
+
 import Editor from './components/Editor';
 import Preview from './components/Preview';
 import Navbar from './components/Navbar';
-import dedent from 'ts-dedent';
+
+import ThemesList from './data/ThemesList';
 
 function App() {
+  const themeOptions = Object.keys(ThemesList).map((key) => {
+    return { value: key, label: key.toLowerCase() };
+  });
+
+  const [themeOption, setThemeOption] = useState(themeOptions[0]);
+  const [theme, setTheme] = useState(ThemesList[themeOption.value].theme);
+
+  useEffect(() => {
+    setTheme(ThemesList[themeOption.value].theme);
+  }, [themeOption]);
+
+  const foregroundColor = theme.colors['editor.foreground'];
+  const backgroundColor = theme.colors['editor.background'];
+
   const [html, setHTML] = useState(dedent`
     <!-- html -->
     <h1 id="title">hello world</h1>
@@ -14,8 +31,8 @@ function App() {
   const [css, setCSS] = useState(dedent`
     /* css */
     body {
-      color: black;
-      background-color: white;
+      color: #F0F0F0;
+      background-color: #121212;
       font-family: sans-serif;
       
       display: flex;
@@ -39,28 +56,37 @@ function App() {
 
   `);
 
-  const [theme, setTheme] = useState('vs-light');
-
   return (
     <div className="flex flex-col overflow-hidden">
-      <Navbar />
+      <Navbar
+        textColor={foregroundColor}
+        backgroundColor={backgroundColor}
+        themeOption={themeOption}
+        setThemeOption={setThemeOption}
+        themeOptions={themeOptions}
+      />
       <div className="flex min-h-container mt-16">
         <div className="flex-1">
           <div className="h-1/3">
             <Editor
               language="html"
-              theme={theme}
+              theme={themeOption.value}
               code={html}
               setCode={setHTML}
             />
           </div>
           <div className="h-1/3">
-            <Editor language="css" theme={theme} code={css} setCode={setCSS} />
+            <Editor
+              language="css"
+              theme={themeOption.value}
+              code={css}
+              setCode={setCSS}
+            />
           </div>
           <div className="h-1/3">
             <Editor
               language="javascript"
-              theme={theme}
+              theme={themeOption.value}
               code={js}
               setCode={setJS}
             />

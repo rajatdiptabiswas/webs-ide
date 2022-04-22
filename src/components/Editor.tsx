@@ -1,5 +1,6 @@
 import React from 'react';
-import MonacoEditor from '@monaco-editor/react';
+import MonacoEditor, { Monaco } from '@monaco-editor/react';
+import ThemesList from './../data/ThemesList';
 
 type EditorProps = {
   language: string;
@@ -14,6 +15,12 @@ export default function Editor({
   code,
   setCode,
 }: EditorProps) {
+  function handleEditorWillMount(monaco: Monaco) {
+    Object.keys(ThemesList).map((key) =>
+      monaco.editor.defineTheme(key, ThemesList[key].theme)
+    );
+  }
+
   return (
     <MonacoEditor
       width="100%"
@@ -28,6 +35,7 @@ export default function Editor({
       options={{
         fontSize: 13,
       }}
+      beforeMount={handleEditorWillMount}
     />
   );
 }
