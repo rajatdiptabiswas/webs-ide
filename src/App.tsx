@@ -55,6 +55,29 @@ function App() {
     };
 
   `);
+  const [sourceCode, setSourceCode] = useState(``);
+
+  const inputDelaySeconds = 0.5;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSourceCode(dedent`
+        </html>
+          <body>
+            ${html}
+          </body>
+          <style>
+            ${css}
+          </style>
+          <script>
+            ${js}
+          </script>
+        </html>
+      `);
+    }, inputDelaySeconds * 1000);
+
+    return () => clearTimeout(timeout);
+  }, [html, css, js]);
 
   return (
     <div className="flex flex-col overflow-hidden">
@@ -93,7 +116,7 @@ function App() {
           </div>
         </div>
         <div className="flex-1">
-          <Preview html={html} css={css} js={js} />
+          <Preview sourceCode={sourceCode} />
         </div>
       </div>
     </div>
