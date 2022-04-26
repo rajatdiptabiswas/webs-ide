@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dedent from 'ts-dedent';
+import { Helmet } from 'react-helmet';
 
 import Editor from './components/Editor';
 import Preview from './components/Preview';
@@ -88,6 +89,9 @@ function App() {
       }}
       className="flex flex-col overflow-hidden"
     >
+      <Helmet>
+        <title>websIDE</title>
+      </Helmet>
       <Navbar
         textColor={foregroundColor}
         backgroundColor={backgroundColor}
