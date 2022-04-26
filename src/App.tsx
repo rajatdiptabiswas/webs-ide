@@ -82,7 +82,12 @@ function App() {
   }, [html, css, js]);
 
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div
+      style={{
+        backgroundColor: `${backgroundColor}`,
+      }}
+      className="flex flex-col overflow-hidden"
+    >
       <Navbar
         textColor={foregroundColor}
         backgroundColor={backgroundColor}
