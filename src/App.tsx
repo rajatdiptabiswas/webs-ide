@@ -25,7 +25,7 @@ function App() {
   const [html, setHTML] = useState(dedent`
     <!-- html -->
     <h1 id="title">hello world</h1>
-    <button onClick="fn()">🌈</button>
+    <button onClick="fn()">⌘</button>
 
   `);
   const [css, setCSS] = useState(dedent`
@@ -50,7 +50,9 @@ function App() {
     const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
     const fn = () => {
-      title.style.color = colors[index++];
+      title.style.color = colors[index];
+
+      index++;
       index %= colors.length;
     };
 
