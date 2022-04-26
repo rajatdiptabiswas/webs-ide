@@ -3,7 +3,8 @@
 
 *Live demo on [GitHub Pages](https://rajatdiptabiswas.github.io/webs-ide)*
 
-![websIDE](https://user-images.githubusercontent.com/32998741/164883506-3548cb91-e488-48a2-ab69-9f6c1809b59e.png)
+![webside-blackboard](https://user-images.githubusercontent.com/32998741/165367504-eb9fb66f-7b3a-4f16-8b09-9a573fea075c.png)
+![webside-idle](https://user-images.githubusercontent.com/32998741/165367519-f9175124-09f7-4f75-8342-107427e89fe5.png)
 
 
 ## Built with
